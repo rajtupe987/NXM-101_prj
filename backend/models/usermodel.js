@@ -5,14 +5,14 @@ const lshcema = mongoose.Schema({
     name: String,
     email: String,
     gender: String,
-    password: String,
     age: Number,
     city: String,
-    is_married: Boolean
+    password: String,
+    confirmpass:String
 })
 
 
-const userModel=mongoose.model("user",lshcema);
+const userModel=mongoose.model("nxm",lshcema);
 
 
 
