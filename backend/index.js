@@ -8,7 +8,7 @@ const cors=require("cors")
 
 const app=express();
 app.use(express.json());
-app.use(cors())
+
 
 
 app.get("/",(req,res)=>{
@@ -16,7 +16,7 @@ app.get("/",(req,res)=>{
 })
 
 app.use("/users",userrouter);
-app.use("/prod",Authenticator)
+
 
 
 app.listen(process.env.port,async()=>{
