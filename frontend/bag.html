@@ -10,6 +10,7 @@
     <script src="https://kit.fontawesome.com/70e0f6f431.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="./styling//bag.css">
+  
 </head>
 
 <body>
@@ -233,7 +234,7 @@ function displaycard(data) {
             el.quantity = quantity
             price.innerText = el.price * quantity
             el.total = el.price * quantity
-            localStorage.setItem("CartData", JSON.stringify(CartData))
+            localStorage.setItem("Cart", JSON.stringify(CartData))
             totaldata = JSON.parse(localStorage.getItem("Cart")) || [];
             totalbill(totaldata)
         })
