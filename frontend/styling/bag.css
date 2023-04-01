@@ -1,3 +1,4 @@
+
 /* below navbar */
 #options {
     display: flex;
@@ -102,55 +103,103 @@ nav {
 }
 
 
-#maincontainer {
-    width: 95%;
+
+
+/* added data to cart */
+#empty-cart {
+    height: auto;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+
+  }
+
+  #addedData {
+    width: 90%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 8px;
+    margin-top: 170px;
+    margin: auto;
+
+  }
+
+  #addedData>div {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     text-align: center;
-    margin: auto;
-    margin-top: 20px;
-}
+    padding: 8px;
+   margin-top: 40px;
+  }
 
-#maincontainer>div>img {
+  #addedData>div>img {
+    height: auto;
     width: 80%;
-}
-
-#maincontainer>div>button {
     margin: auto;
-}
-/* filter and sort part */
+  }
 
+  #addedData>div>button {
+    background-color: black;
+    color: white;
+    padding: 10px 90px 10px 90px;
+    margin-top: 10px;
+    cursor: pointer;
 
-#fil-sort{
+  }
+
+  #addedData>div>div {
+
+    width: 50%;
     display: flex;
     justify-content: space-evenly;
+    border: 1px solid black;
+    margin: auto;
+    cursor: pointer;
+  }
+
+  #addedData>div>div>button{
+    width: 18%;
+  }
+  #addedData>div>div>span {
     margin-top: 40px;
+  }
+
+
+  /* checkout page */
+  #finalpart{
+    height: auto;
+    width: 30%;
+  
+    margin: 50px auto;
+    text-align: center;
+    padding: 2%;
+    background-color: #dbdbdb;
 }
-
-#fil-sort>select{
-    padding: 1%;
-    border-radius: 5px;
+#finalpart>button{
+    
+    background-color: #008527;
+    padding: 4%;
+    border: none;
 }
-
-/* footer part */
-
-#footer>div>h3{
-    font-weight: bold;
+#finalpart>button>a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
 }
+/* 
+  footer part */
 
-
+  
 #footer{
     display: flex;
     justify-content: space-evenly;
-    background-color:  rgb(144,39,53);
+    background-color: rgba(195, 4, 4, 0.797);
     margin-top: 30px;
-    color: white;
 }
 #footer>div>h3{
     font-weight: bold;
 }
-.redio-inline{
-    display: block;
-    padding: 2%;
+
+
+h2{
+    margin-top: 200px;
+    margin-left: 10px;
 }

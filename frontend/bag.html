@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./styling/register.css">
     <script src="https://kit.fontawesome.com/70e0f6f431.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="./styling//bag.css">
 </head>
 
 <body>
@@ -44,6 +45,27 @@
 
         </div>
     </nav>
+    <h2 id="total">Your  total <span id="fav-total">0</span> Products in the favourites</h2> 
+    <h4 id="totalprice">Your total bill =<span id="fav-sum"></span></h4>
+
+    <!-- added Data to cart -->
+    <div id="addedData">
+
+    </div>
+
+
+
+    <!-- checkout page -->
+    <div id="finalpart">
+ 
+        <h3 id="total2"> total products <span id="prod">0</span></h3>
+        <h3 id="totalprice2">Your total bill =<span id="totalp"></span></h3>
+     
+        <hr>
+        <h3 id="finaltotal">ORDER TOTAL - <span id="ordert"></span></h3>
+        <button id="pay2"><a href="#">CHECKOUT</a>
+    
+    </div>
 
 
 
@@ -114,5 +136,143 @@
     })
     document.querySelector("#bag").addEventListener("click",()=>{
         location.href="bag.html"
-    })
+    });
+
+
+
+
+
+
+
+
+    
+let CartData = JSON.parse(localStorage.getItem("Cart")) || [];
+
+let emptycart = document.querySelector("#empty-cart");
+
+
+
+
+
+
+// let checkout = document.querySelector("#pay2");
+
+// checkout.addEventListener("click", function (event) {
+//     event.preventDefault()
+//     location.href = "/payment/payment.html";
+// })
+
+
+displaycard(CartData);
+
+totalbill(CartData)
+
+function totalbill(data) {
+    let total = data.reduce((acc, el) => {
+        return acc += el.price * el.quantity
+    }, 0)
+    document.querySelector("#fav-sum").innerText = total;
+    document.querySelector("#totalp").innerText = total;
+    document.querySelector("#ordert").innerText=total
+
+}
+
+
+function displaycard(data) {
+    let container = document.querySelector("#addedData")
+    container.textContent = null
+
+     document.querySelector("#fav-total").innerText = data.length;
+     
+     document.querySelector("#prod").innerText = data.length;
+
+     
+
+    data.forEach(el => {
+        let quantity = el.quantity
+        let div = document.createElement("div")
+        let img = document.createElement("img")
+        img.setAttribute("src", el.img)
+        
+
+        let price = document.createElement("p")
+        price.innerText = el.price * quantity
+        price.style.fontWeight = 400;
+
+        let content = document.createElement("p")
+        content.innerText = el.content;
+
+
+        let plus = document.createElement("button")
+        plus.innerText = "+"
+        plus.classList = "plus"
+        plus.addEventListener("click", function () {
+            quantity++
+            cnt.innerText = quantity
+            el.quantity = quantity
+            price.innerText = el.price * quantity
+            el.total = el.price * quantity
+            localStorage.setItem("Cart", JSON.stringify(CartData))
+            totaldata = JSON.parse(localStorage.getItem("Cart")) || [];
+            totalbill(totaldata)
+        })
+
+        let cnt = document.createElement("p")
+        cnt.innerText = quantity
+        cnt.classList = "countnum"
+        let minus = document.createElement("button")
+        minus.innerText = "-"
+        minus.classList = "minus"
+        minus.addEventListener("click", function () {
+            quantity--
+            if (quantity <= 0) {
+                quantity = 1
+                cnt.innerText = quantity
+            }
+            cnt.innerText = quantity
+            el.quantity = quantity
+            price.innerText = el.price * quantity
+            el.total = el.price * quantity
+            localStorage.setItem("CartData", JSON.stringify(CartData))
+            totaldata = JSON.parse(localStorage.getItem("Cart")) || [];
+            totalbill(totaldata)
+        })
+
+        let qunatity_div = document.createElement("div")
+        qunatity_div.classList = "quantity-div"
+
+        qunatity_div.append(minus, cnt, plus)
+
+
+        // delete function
+        let cancel = document.createElement("button")
+        cancel.innerText = "Delete"
+        cancel.addEventListener("click", function () {
+            let deleted = data.filter((element) => {
+                return el.id != element.id
+            })
+            displaycard(deleted)
+            localStorage.setItem("Cart", JSON.stringify(deleted))
+            totalbill(deleted)
+        })
+
+        div.append(img,price,content,qunatity_div,cancel)
+
+        container.append(div)
+    });
+}
+
+
+
+
+// checkout part
+
+document.querySelector("#pay2").addEventListener("click",()=>{
+
+    setTimeout(()=>{
+  location.href="./payment.html"
+},2000);
+})
+
+
 </script>
