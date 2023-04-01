@@ -66,7 +66,7 @@
         </div>
         <div class="shippingPart productFlex downline">
           <h2>Shipping</h2>
-          <h3 id="shippingTax">₹</h3>
+          <h3 id="shippingTax">₹70</h3>
         </div>
         <div class="totalProduct productFlex downline">
           <h2>Total</h2>
@@ -213,4 +213,51 @@
     })
 
 
+
+
+  // payment final part
+
+  let shoppingData = JSON.parse(localStorage.getItem("Cart")) || [];
+  let productCards = document.querySelector(".productCards");
+  let clothesTotalPrize = document.querySelector("#clothesTotalPrize");
+  const totalPrizeShow = document.querySelector("#totalPrizeShow");
+
+  let userData = "";
+  let sum = 0;
+  shoppingData.forEach((data) => {
+    sum += data.price * data.quantity;
+    userData += `<div class ="imageCard">
+        <img src="${data.img}" alt="">
+        <p id="productName">${data.content}</p><p id="price">₹ ${data.price * data.quantity}</p>    
+        </div>`;
+  });
+  productCards.innerHTML = userData;
+  clothesTotalPrize.innerText = `₹ ${sum}`;
+  if (sum > 0) {
+    sum += 70
+  }
+
+  totalPrizeShow.innerText = `₹ ${sum}`;
+
+
+
+
+  document.querySelector(".btn").addEventListener("click", () => {
+    //swal("", "Your Order is placed succesfully", "success");
+
+    if (name =="" || email=="" || add=="" || city=="" || state=="" || zip=="" || cname=="" || ccnum=="" || expmonth=="" || expyear=="" || cvv=="") {
+      
+    
+      swal("", "Your Order is placed succesfully", "success");
+    } else {
+      swal("", "fill all the data", "info");
+    }
+
+
+    setTimeout(() => {
+            location.href="./index.html"
+        }, 1000)
+
+
+  })
 </script>
