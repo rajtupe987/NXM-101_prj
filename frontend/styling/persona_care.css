@@ -102,6 +102,42 @@ nav {
 }
 
 
+#maincontainer {
+    width: 95%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    text-align: center;
+    margin: auto;
+    margin-top: 20px;
+}
+
+#maincontainer>div>img {
+    width: 80%;
+}
+
+#maincontainer>div>button {
+    margin: auto;
+}
+/* filter and sort part */
+
+
+#fil-sort{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 40px;
+}
+
+#fil-sort>select{
+    padding: 1%;
+    border-radius: 5px;
+}
+
+/* footer part */
+
+#footer>div>h3{
+    font-weight: bold;
+}
 /* footer part */
 
 #footer>div>h3{
