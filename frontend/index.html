@@ -54,6 +54,27 @@
 
 
 
+    <div id="slidebar">
+
+        <div>
+            <img src="https://cdn.plotch.io/image/upload/C/V/1676285392_My5wbmc=.png" alt="" id="product">
+        </div>
+        <div>
+            <img src="https://cdn.plotch.io/image/upload/C/V/1676285387_Mi5wbmc=.png" alt="" id="fashion">
+        </div>
+        <div>
+            <img src="https://cdn.plotch.io/image/upload/C/V/1676285398_NC5wbmc=.png" alt="" id="electronics">
+        </div>
+        <div>
+            <img src="https://cdn.plotch.io/image/upload/C/V/1676285404_NS5wbmc=.png" alt="" id="store">
+        </div>
+        <div>
+            <img src="https://cdn.plotch.io/image/upload/C/V/1676285409_Ni5wbmc=.png" alt="" id="buety">
+        </div>
+        <div>
+            <img src="https://cdn.plotch.io/image/upload/C/V/1676285392_My5wbmc=.png" alt="" id="decore">
+        </div>
+    </div>
  <!-- slider part -->
 
     <div class="slideshow-container">
@@ -143,6 +164,7 @@
             <p>About Fullbeauty Brands</p>
             <p>Shipping To</p>
             <p>Turkmenistan</p>
+            <a href="admin.html">admin</a>
             <div>
                 <img src="https://assets.pharmeasy.in/apothecary/images/Instagram.svg?dim=64x0" alt="">
                 <img src="https://assets.pharmeasy.in/apothecary/images/facebook.svg?dim=64x0" alt="">
@@ -168,7 +190,23 @@
     })
     document.querySelector("#bag").addEventListener("click",()=>{
         location.href="bag.html"
-    })
+    });
+    document.querySelector("#product").addEventListener("click",()=>{
+        location.href="products.html"
+    });
+    document.querySelector("#fashion").addEventListener("click",()=>{
+        location.href="fashion.html"
+    });
+    document.querySelector("#electronics").addEventListener("click",()=>{
+        location.href="electronics.html"
+    });
+    document.querySelector("#buety").addEventListener("click",()=>{
+        location.href="persona_care.html"
+    });
+    document.querySelector("#decore").addEventListener("click",()=>{
+        location.href="decore.html"
+    });
+
     let slideIndex = 1;
 showSlides(slideIndex);
 
@@ -195,5 +233,8 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
 }
+let username = localStorage.getItem("username")
+
+document.querySelector("#username").innerText = `Hello, ${username}`
 </script>
 </html>

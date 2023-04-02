@@ -106,6 +106,17 @@ nav {
     margin-top: 15px;
 }
 
+
+#slidebar{
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    margin-top:150px;
+}
+
+#slidebar>div>img{
+    width: 99%;
+}
+
 /* below options */
 h1 {
     text-align: center;
@@ -163,7 +174,7 @@ img {vertical-align: middle;} */
   max-width: 1300px;
   position: relative;
   margin: auto ;
-  margin-top: 150px;
+  margin-top: 50px;
 
 }
 
