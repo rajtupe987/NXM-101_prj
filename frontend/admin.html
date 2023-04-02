@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login page</title>
-    <link rel="stylesheet" href="./styling/login.css">
+    <title>Signup page</title>
+    <link rel="stylesheet" href="./styling/register.css">
     <script src="https://kit.fontawesome.com/70e0f6f431.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="./styling//bag.css">
+
 </head>
 
 <body>
-
     <!-- Nav bar -->
     <nav>
         <div id="nav">
@@ -46,26 +47,23 @@
         </div>
     </nav>
 
-    <div id="form">
 
-        <div id="container">
-            <h1>Login here!</h1>
-            <p>Please fill in this form to Login to your account.</p>
-            <hr>
-            <label for="name"><b>Name</b></label>
-            <input type="text" placeholder="Enter name" id="name" required>
-            <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" id="email" required>
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" id="password" required>
-            <button onclick="onlogin()" class="registerbtn">Login</button>
-        </div>
-
-        <div class="container signin">
-            <p>Don't Have an Acoount? <a href="./register.html">Register here</a>.</p>
-        </div>
+    <div id="container">
+        <form id="addProduct">
+            <h1>Add Products</h1>
+            <input type="text" id="img" placeholder="image link" required>
+            <br>
+            <input type="text" id="price" placeholder="Product price" required>
+            <br>
+            <input type="text" id="content" placeholder="Product content" required>
+            <br>
+            <input type="submit" class="submitBtn">
+        </form>
 
     </div>
+
+
+
 
     <!-- footer part -->
     <div id="footer">
@@ -115,64 +113,36 @@
         </div>
 
     </div>
-
-
-
 </body>
 
 </html>
 <script>
+    let productform = document.querySelector("#addProduct")
 
-    let name = document.querySelector("#name").value;
-    let email = document.querySelector("#email").value;
-    let pass = document.querySelector("#password").value;
+    productform.addEventListener("submit", (e) => {
+        e.preventDefault();
+        let payload = {
+            img: productform.img.value,
+            price: productform.price.value,
+            content: productform.content.value,
+        }
+        console.log(payload);
 
-    document.querySelector("#logo").addEventListener("click", () => {
-        location.href = "index.html"
-    })
-
-    document.querySelector("#cart").addEventListener("click", () => {
-        location.href = "cart.html"
-    })
-    document.querySelector("#user").addEventListener("click", () => {
-        location.href = "register.html"
-    })
-    document.querySelector("#bag").addEventListener("click", () => {
-        location.href = "bag.html"
-    });
-
-
-         
-        
-    const onlogin = () => {
-
-        payload = {
-            name: document.getElementById("name").value,
-            email: document.getElementById("email").value,
-            password: document.getElementById("password").value
-        };
-
-        fetch("https://sore-blue-llama-hem.cyclic.app/users/login", {
+        fetch("https://sore-blue-llama-hem.cyclic.app/fashion/add", {
             method: "POST",
             headers: {
-                "Content-type": "application/json"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify(payload)
-        }).then(res => res.json())
-            .then(res => {
-                console.log(res);
-                localStorage.setItem("token1", res.token);
 
-                localStorage.setItem("username", payload.name)
-                console.log(res.name)
+        }).then((res) => {
+            return res.json()
 
-                setTimeout(() => {
-                    location.href = "./index.html";
-                }, 2000)
-            })
-            .catch(err => {
-                console.log(err)
-                swal("", "error while Login", "info");
-            })
-    }
+        }).then((res) => {
+            console.log(res)
+        }).catch((err) => {
+            console.log(err)
+
+        })
+    })
 </script>

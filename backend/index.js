@@ -15,17 +15,18 @@ const app=express();
 app.use(express.json());
 app.use(cors())
 
+app.get("/",(req,res)=>{
+    res.send("HOME PAGE")
+})
 
-app.use("/users",userrouter);
 app.use("/store",storeroute);
 app.use("/fashion",fashionroute);
 app.use("/buety",buetyroute);
 app.use("/home",homeroute);
 app.use("/ele",eleroute)
 
-app.get("/",(req,res)=>{
-    res.send("HOME PAGE")
-})
+app.use("/users",userrouter);
+app.use(Authenticator);
 
 
 app.listen(process.env.port,async()=>{

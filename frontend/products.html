@@ -142,7 +142,7 @@
 
     
     let arr=[]
-fetch("http://localhost:6600/store")
+fetch("https://sore-blue-llama-hem.cyclic.app/store")
         .then((res) => {
             return res.json()
         })
@@ -186,7 +186,7 @@ fetch("http://localhost:6600/store")
 
                 for (let i = 0; i < CartData.length; i++) {
                     console.log(CartData[i].id)
-                    if (CartData[i].id === el.id) {
+                    if (CartData[i]._id === el._id) {
                         alreday = true
                         break;
                     }

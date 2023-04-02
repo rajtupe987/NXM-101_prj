@@ -46,7 +46,6 @@
     </nav>
 
 
-
     <div id="form" action="/action_page.php">
         <div class="container">
             <h1>Register</h1>
@@ -57,23 +56,14 @@
             <label for="email"><b>Email</b></label>
             <input type="text" placeholder="Enter Email" id="email" required>
 
-            <label class="redio-inline">
-                <input type="radio" name="gender" value="male" checked>
-                <span>male</span>
-            </label>
-            <label class="redio-inline">
-                <input type="radio" name="gender" value="female">
-                <span>female</span>
-            </label>
-            
-
-            <label for="city"><b>City</b></label>
+            <label for="gender"><b>gender</b></label>
+            <input type="text" placeholder="Enter gender" id="gender" required>
+            <label for="city"><b>city</b></label>
             <input type="text" placeholder="Enter city" id="city" required>
-            <label for="password"><b>password</b></label>
-            <input type="password" placeholder="Enter password" id="pass" required>
-            <label for="Confirm password"><b>Confirm password</b></label>
-            <input type="password" placeholder="Confirm password" id="co-pass" required>
-         
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" id="password" required>
+          
             <button onclick="onregi()" class="registerbtn">Register</button>
         </div>
         <div class="container signin">
@@ -81,71 +71,112 @@
         </div>
     </div>
 
-<!-- footer part -->
-<div id="footer">
+    <!-- footer part -->
+    <div id="footer">
 
-    <div>
-        <h3>About Us</h3>
-        <p>Contact U</p>
-        <p>Shopping Info</p>
-        <p>Shipping Info</p>
-        <p>Returns</p>
-        <p>Exchanges</p>
-        <p>Billing & Payment</p>
-        <p>Size & Fit</p>
-        <p>International</p>
-    </div>
-    <div>
-        <h3>OUR COMPANY</h3>
-        <p>Sign In / Register</p>
-        <p>Track My Order</p>
-        <p>Return Order</p>
-        <p>Order History</p>
-        <p>Wishlist</p>
-        <p>Offers & Coupons</p>
-    </div>
-    <div>
-        <h3>TOP CATEGORIES</h3>
-        <p>Apply Now</p>
-        <p>Learn More</p>
-        <p>Pay My Bill</p>
-        <p>Pay My Bill</p>
-        <p>Catalog</p>
-        <p>Order From Catalog</p>
-    </div>
-    <div>
-        <h3>POLICIES & INFO</h3>
-        <p>About Us</p>
-        <p>About Fullbeauty Brands</p>
-        <p>Shipping To</p>
-        <p>Turkmenistan</p>
         <div>
-            <img src="https://assets.pharmeasy.in/apothecary/images/Instagram.svg?dim=64x0" alt="">
-            <img src="https://assets.pharmeasy.in/apothecary/images/facebook.svg?dim=64x0" alt="">
-            <img src="https://assets.pharmeasy.in/apothecary/images/Youtube.svg?dim=64x0" alt="">
-            <img src="https://assets.pharmeasy.in/apothecary/images/Twitter.svg?dim=64x0" alt="">
+            <h3>About Us</h3>
+            <p>Contact U</p>
+            <p>Shopping Info</p>
+            <p>Shipping Info</p>
+            <p>Returns</p>
+            <p>Exchanges</p>
+            <p>Billing & Payment</p>
+            <p>Size & Fit</p>
+            <p>International</p>
+        </div>
+        <div>
+            <h3>OUR COMPANY</h3>
+            <p>Sign In / Register</p>
+            <p>Track My Order</p>
+            <p>Return Order</p>
+            <p>Order History</p>
+            <p>Wishlist</p>
+            <p>Offers & Coupons</p>
+        </div>
+        <div>
+            <h3>TOP CATEGORIES</h3>
+            <p>Apply Now</p>
+            <p>Learn More</p>
+            <p>Pay My Bill</p>
+            <p>Pay My Bill</p>
+            <p>Catalog</p>
+            <p>Order From Catalog</p>
+        </div>
+        <div>
+            <h3>POLICIES & INFO</h3>
+            <p>About Us</p>
+            <p>About Fullbeauty Brands</p>
+            <p>Shipping To</p>
+            <p>Turkmenistan</p>
+            <div>
+                <img src="https://assets.pharmeasy.in/apothecary/images/Instagram.svg?dim=64x0" alt="">
+                <img src="https://assets.pharmeasy.in/apothecary/images/facebook.svg?dim=64x0" alt="">
+                <img src="https://assets.pharmeasy.in/apothecary/images/Youtube.svg?dim=64x0" alt="">
+                <img src="https://assets.pharmeasy.in/apothecary/images/Twitter.svg?dim=64x0" alt="">
+            </div>
+
         </div>
 
     </div>
-
-</div>
 </body>
 
 </html>
 
 <script>
-    
-    document.querySelector("#logo").addEventListener("click",()=>{
-        location.href="index.html"
+
+    document.querySelector("#logo").addEventListener("click", () => {
+        location.href = "index.html"
     })
-  
-    document.querySelector("#cart").addEventListener("click",()=>{
-        location.href="cart.html"
+
+    document.querySelector("#cart").addEventListener("click", () => {
+        location.href = "cart.html"
     })
-    document.querySelector("#user").addEventListener("click",()=>{
-        location.href="register.html"
+    document.querySelector("#user").addEventListener("click", () => {
+        location.href = "register.html"
     })
-    document.querySelector("#bag").addEventListener("click",()=>{
-        location.href="bag.html"
+    document.querySelector("#bag").addEventListener("click", () => {
+        location.href = "bag.html"
+    });
+
+
+
+
+    const onregi = () => {
+
+payload = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    gender:document.getElementById("gender").value,
+    city:document.getElementById("city").value,
+    password: document.getElementById("password").value
+};
+
+
+fetch("https://sore-blue-llama-hem.cyclic.app/users/register", {
+    method: "POST",
+    headers: {
+        "Content-type": "application/json"
+    },
+    body: JSON.stringify(payload)
+}).then(res => res.json())
+    .then(res => {
+        console.log(res);
+
+        
+        swal("", "You are succesfull registered", "success");
+        setTimeout(()=>{
+            location.href = "./login.html";
+        },1000)
+      
+        
     })
+    .catch((err) => {
+        console.log(err)
+        swal("", "You are succesfull registered", "info");
+    });
+
+}
+
 </script>
+

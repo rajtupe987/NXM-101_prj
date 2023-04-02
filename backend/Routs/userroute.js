@@ -9,32 +9,33 @@ const userrouter=express.Router();
 
 userrouter.post("/register",async(req,res)=>{
  
-    const password=req.body.password;
-    const confirmpass=req.confirmpass;
 
-    if(password===confirmpass){
-        try {
-       
-            const pageloding=req.body;
-            const user=await userModel.findOne({email:pageloding.email});
-            if(user){
-               res.send({"msg":"User already exist, please login"})
-            }else{
-               const passhash=await bcrypt.hashSync(pageloding.password,5);
-               pageloding.password=passhash;
+        const {name,email,gender,city,password} = req.body;
    
-               const newuser=new userModel(pageloding);
-              await newuser.save();
-   
-              return res.send({"msg":"User Registered Succesfully..",user:newuser})
+        const mail=await userModel.find({"email":email});
+     
+        if(mail.length>0){
+         res.send({"msg":"user alreay registered please login"})
+        }else{
+         try {
+         
+             bcrypt.hash(password,5,async(err,hash)=>{
+         
+                 if(err){
+                     res.send(({"msg":"Sonmething went wrong"}))
+                 }else{
+                    const app= new userModel({name,email,gender,city,password:hash});
+                    await app.save();
+                     res.send(({"mag":"New user created"}))
+                 }
+             })
+            } catch (error) {
+             res.send(({"msg":"Sonmething went wrong"}))
             }
-       } catch (error) {
-           res.send({"msg":error.message})
-       }
-    }else{
-        res.send("password is not correct")
-    }
     
+        }
+    
+
 });
 
 

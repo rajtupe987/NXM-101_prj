@@ -4,11 +4,9 @@ const mongoose = require("mongoose");
 const lshcema = mongoose.Schema({
     name: String,
     email: String,
-    gender: String,
-    age: Number,
-    city: String,
-    password: String,
-    confirmpass:String
+    gender:String,
+    city:String,
+    password: String
 })
 
 

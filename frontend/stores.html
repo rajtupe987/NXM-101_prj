@@ -47,7 +47,32 @@
     </nav>
 
 
+    <div id="slidebar">
 
+        <div>
+
+            <img src="https://cdn.plotch.io/image/upload/C/V/1676285392_My5wbmc=.png" alt="">
+        </div>
+        <div>
+            <img src="https://cdn.plotch.io/image/upload/C/V/1676285387_Mi5wbmc=.png" alt="">
+        </div>
+        <div>
+            <img src="https://cdn.plotch.io/image/upload/C/V/1676285398_NC5wbmc=.png" alt="">
+        </div>
+        <div>
+            <img src="https://cdn.plotch.io/image/upload/C/V/1676285404_NS5wbmc=.png" alt="">
+        </div>
+        <div>
+            <img src="https://cdn.plotch.io/image/upload/C/V/1676285409_Ni5wbmc=.png" alt="">
+        </div>
+        <div>
+            <img src="https://cdn.plotch.io/image/upload/C/V/1676285392_My5wbmc=.png" alt="">
+        </div>
+    </div>
+
+    <div id="banner">
+        <!-- <img id="poster"style="width: 100%;" onclick="login()" src="/images/Banner2.jpg" alt=""> -->
+    </div>
 
 <!-- footer part -->
 <div id="footer">
@@ -119,5 +144,27 @@
 
 
     
+    let arr=["https://cdn.plotch.io/image/upload/C/V/1676097252_Q1JBRlRTVklMTEEyLU5FV0hFUk9CQU5ORVJTLnBuZw==.png",
+    "https://cdn.plotch.io/image/upload/C/V/1671110178_SG9tZWRlY29yLnBuZw==.png",
+    "https://cdn.plotch.io/image/upload/C/V/1671110161_Mi5wbmc=.png",
+    "https://cdn.plotch.io/image/upload/C/V/1676286917_Q1JBRlRTVklMTEEyLU5FV0hFUk9CQU5ORVJTLnBuZw==.png",
+    "https://cdn.plotch.io/image/upload/C/V/1671110155_NC5wbmc=.png",
+    "https://img.freepik.com/free-vector/black-friday-super-sale-illustration-with-gold-lettering-gift-box-dark-background_1314-3565.jpg?w=1060&t=st=1674300045~exp=1674300645~hmac=1cac1f40b117b15d077411b92a98ac7adb8a9ab3ea9e7286990d7fbb37e9fd89"]
+let div = document.getElementById("banner")
+   let i =0
+   let img = document.createElement("img")
+    img.src = arr[i]
+     div.append(img)
 
+
+setInterval(()=>{
+   i++;
+   if(i == arr.length-1){
+     i=0
+   }
+
+ img.src = arr[i]
+ div.append(img)
+
+},3000)
 </script>
